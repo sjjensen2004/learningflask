@@ -1,6 +1,14 @@
 {% extends "bootstrap/base.html" %}
 
-{% block title %}NetSMART{% endblock %}
+{% block head %}
+{{ super() }}
+<link rel="shortcut icon" href="{{ url_for('static', filename = 'Charter.png') }}"
+      type="image/x-icon">
+<link rel="icon" href="{{ url_for('static', filename = 'Charter.png') }}"
+      type="image/x-icon">
+{% endblock %}
+
+{% block title %}NFVI POC{% endblock %}
 
 {% block navbar %}
 <div class="navbar navbar-inverse" role="navigation">
@@ -12,7 +20,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="/">NetSMART</a>
+            <a class="navbar-brand" href="/">NFVI POC</a>
         </div>
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
@@ -29,3 +37,7 @@
 </div>
 {% endblock %}
 
+{% block scripts %}
+{{ super() }}
+{{ moment.include_moment() }}
+{% endblock %}
