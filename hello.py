@@ -8,6 +8,7 @@ from wtforms.validators import DataRequired
 import os
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate, MigrateCommand
+from flask_mail import Mail, Message
 
 
 basedir = os.path.abspath(os.path.dirname(__file__))
@@ -17,6 +18,14 @@ app.config['SQLALCHEMY_DATABASE_URI'] =\
     'sqlite:///' + os.path.join(basedir, 'data.sqlite')
 app.config['SQLALCHEMY_COMMIT_ON_TEARDOWN'] = True
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+app.config['MAIL_SERVER'] = 'smtp-mail.outlook.com'
+app.config['MAIL_PORT'] = 587
+app.config['MAIL_USE_TLS'] = True
+app.config['MAIL_USERNAME'] = os.environ.get('MAIL_USERNAME')
+app.config['MAIL_PASSWORD'] = os.environ.get('MAIL_PASSWORD')
+app.config['FLASKY_MAIL_SUBJECT_PREFIX'] = 'NFVI POC'
+app.config['FLASKY_MAIL_SENDER'] = 'NFVI ADMIN <NFVI@charter.com>'
+
 
 manager = Manager(app)
 bootstrap = Bootstrap(app)
